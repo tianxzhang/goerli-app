@@ -25,7 +25,7 @@ function Mint({ countdownEnd }: MintProps) {
   const { config: contractWriteConfig } = usePrepareContractWrite({
     ...contractConfig,
     functionName: "mint",
-    args: [count],
+    args: count,
   });
 
   const {
