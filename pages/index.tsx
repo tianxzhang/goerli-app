@@ -85,7 +85,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <Countdown duration={10} onCountdownEnd={handleCountdownEnd} />
+        <Countdown duration={20} onCountdownEnd={handleCountdownEnd} />
       </main>
     </div>
   );

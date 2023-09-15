@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { SingleValue } from "react-select";
 import {
   useAccount,
@@ -46,6 +46,18 @@ function Mint({ countdownEnd }: MintProps) {
     }
   };
 
+  const btnEnable = useMemo(() => {
+    if (!countdownEnd) {
+      return false;
+    }
+
+    if (!mint || !isConnected) {
+      return false;
+    }
+
+    return true;
+  }, [countdownEnd, mint, isConnected]);
+
   const isMinted = txSuccess;
 
   return (
@@ -57,7 +69,7 @@ function Mint({ countdownEnd }: MintProps) {
             ? "bg-[#44EEEE]"
             : "bg-[#AFEEEE]"
         }`}
-        disabled={!countdownEnd && (!mint || !isConnected)}
+        disabled={!btnEnable}
         onClick={() => mint?.()}
       >
         {isMintLoading && "Confirming in wallet"}
